@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #container{
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        gap:20px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+    
+    h3{
+        text-align: center;
+        font-size: 30px;
+    }
+    p{
+        text-align: center;
+        font-size: 20px;
+    } 
+   
+    p +img{
+        display: block;
+        height: 50px;
+        margin-left: 100px;
+        
+    }
+</style>
+<body>
+    <div id="container"></div>
+</body>
+</html>
+<script>
+    var investorArr=JSON.parse(localStorage.getItem("investorData"));
+    console.log(investorArr);
+    investorArr.forEach(function(ele){
+      var box=document.createElement("div");
+       var inverstor_img=document.createElement("img");
+       inverstor_img.setAttribute("src",ele.Image);
+       var name1=document.createElement("h3");
+       name1.innerText=ele.name;
+       var role=document.createElement("p");
+       role.innerText=ele.role;
+       var inverstor_logo=document.createElement("img");
+       inverstor_logo.setAttribute("src",ele.complogo);
+      
+       box.append(inverstor_img,name1,role,inverstor_logo);
+       
+       document.querySelector("#container").append(box);
+       box.style.boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px;"
+
+    });
+    
+
+</script>
